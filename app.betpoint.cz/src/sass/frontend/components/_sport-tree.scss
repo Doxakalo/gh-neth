@@ -1,0 +1,135 @@
+@use '../variables';
+@use '../mixins';
+@use '../grid';
+
+.sport-tree {
+	box-sizing: border-box;
+	user-select: none;
+	background-color: variables.$colorGrayMedium;
+	border-radius: 0.4em;
+	padding: 0.5rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
+}
+
+.sport-tree-item {
+	background-color: white;
+	border-radius: 0.35em;
+	padding: 0.6rem 0.75em;
+
+	.heading {
+		cursor: pointer;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.7em;
+
+		// @animation
+		@include mixins.link-transition;
+
+		.title {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			font-weight: bold;
+			gap: 0.3em;
+			overflow: hidden;
+
+			.sport-icon {
+				font-size: 1.75em;
+			}
+		}
+
+		.caret {
+			transition: transform variables.$hoverAnimationDuration ease-out;
+		}
+
+		@include mixins.hover-enabled {
+			&:hover {
+				color: variables.$colorPrimaryActive;
+			}
+		}
+		@include mixins.touch-enabled {
+			&:active {
+				color: variables.$colorPrimaryActive;
+			}
+		}
+	}
+
+	.categories {
+		display: none;
+		@include mixins.list-reset;
+		padding-top: 0.75em;
+		flex-direction: column;
+		gap: 0.65em;
+
+		li {
+			cursor: pointer;
+			display: flex;
+			flex-direction: row;
+			align-items: flex-start;
+			justify-content: space-between;
+			gap: 1em;
+
+			// @animation
+			@include mixins.link-transition;
+			line-height: variables.$lineHeightCondensed;
+
+			span {
+				display: block;
+			}
+
+			.count {
+				color: variables.$colorGrayText;
+				font-size: var(--font-size-small);
+			}
+
+			&.selected {
+				font-weight: variables.$fwMedium;
+				color: variables.$colorPrimaryActive;
+				pointer-events: none;
+			}
+
+			@include mixins.hover-enabled {
+				&:hover {
+					&,
+					.count {
+						color: variables.$colorPrimaryActive;
+					}
+				}
+			}
+			@include mixins.touch-enabled {
+				&:active {
+					&,
+					.count {
+						color: variables.$colorPrimaryActive;
+					}
+				}
+			}
+		}
+	}
+
+	&.open {
+		.heading {
+			.caret {
+				transform: rotate(90deg);
+			}
+		}
+
+		.categories {
+			display: flex;
+		}
+	}
+
+	&.disabled {
+		pointer-events: none;
+
+		.heading {
+			cursor: default;
+			opacity: 0.4;
+		}
+	}
+
+}

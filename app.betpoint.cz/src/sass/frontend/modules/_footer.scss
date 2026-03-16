@@ -1,0 +1,64 @@
+@use '../variables';
+@use '../mixins';
+@use '../grid';
+
+footer.main-footer {
+	background-color: black;
+	color: white;
+	text-align: center;
+	padding: 1.25em 0;
+	font-size: var(--font-size-small);
+
+	// @responsive
+	@include grid.mq(mobile) {
+		padding: 1em 0;
+	}
+
+	.footer-inner {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		gap: 1.5em;
+
+		// @responsive
+		@include grid.mq(mobile) {
+			flex-direction: column-reverse;
+			gap: 1em;
+		}
+	}
+
+	nav {
+		display: flex;
+		flex-direction: row;
+		gap: 1.25em;
+
+		// @responsive
+		@include grid.mq(mobile) {
+			flex-direction: column;
+			justify-content: center;
+			gap: 0;
+		}
+	}
+
+	p {
+		margin-bottom: 0;
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+}
+
+.icon-width-footer {
+	font-size: 44px;
+}
+
+.icon-width-footer-small {
+	font-size: 30px;
+}
+
+.center-h {
+	display: flex;
+	align-items: center;
+}

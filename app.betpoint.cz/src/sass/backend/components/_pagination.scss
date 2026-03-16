@@ -1,0 +1,50 @@
+@use '../variables';
+@use '../mixins';
+
+.pagination {
+	@include mixins.list-reset;
+
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.4em;
+	margin-top: 1.5em;
+
+	.page-item {
+		.page-link {
+			$minSize: 1.95em;
+
+			@include mixins.button-reset;
+			min-height: $minSize;
+			min-width: $minSize;
+			font-size: 1em;
+			line-height: 1em;
+			padding: 0.4em 0.3em;
+			border-radius: 0.4rem;
+			border: 1px solid variables.$colorGrayMedium;
+			color: variables.$colorBodyText;
+			text-align: center;
+
+			&:hover:not(.active):not(:disabled) {
+				background-color: black;
+				color: white;
+			}
+		}
+
+		&.active {
+			.page-link {
+				background-color: black;
+				color: white;
+			}
+		}
+
+		&.disabled {
+			.page-link {
+				color: variables.$colorGrayDark;
+				cursor: default;
+				opacity: 0.6;
+			}
+		}
+	}
+}

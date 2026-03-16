@@ -1,0 +1,97 @@
+@use '../variables';
+@use '../mixins';
+
+header {
+	background: linear-gradient(180deg, #F6E9C4 0%, variables.$colorPrimaryYellow 100%);
+
+	.header-inner {
+		min-height: 100px;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		gap: 2em;
+	}
+
+	.brand {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		white-space: nowrap;
+		gap: 1em;
+		text-decoration: none;
+		color: variables.$colorBodyText;
+
+		img {
+			display: block;
+			height: 64px;
+			width: auto;
+		}
+
+		span {
+			font-size: 1.5em;
+			font-weight: 200;
+		}
+
+		strong {
+			font-size: 1.5em;
+		}
+	}
+
+	nav {
+		$gap: 1.5em;
+
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: $gap;
+		row-gap: 0;
+		
+		ul {
+			@include mixins.list-reset;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: $gap;
+			row-gap: 0;
+		}
+
+		a.nav-link,
+		button {
+			color: variables.$colorBodyText;
+			font-size: 1em;
+			line-height: 1em;
+			font-weight: variables.$fwLight;
+			text-decoration: none;
+
+			.icon {
+				vertical-align: middle;
+				margin-top: -0.25em;
+				margin-left: 0.25em;
+			}
+			
+			& {
+				@include mixins.link-transition;
+				@include mixins.button-reset;
+			}
+
+			&:hover,
+			&:focus {
+				text-decoration: underline;
+				color: variables.$colorPrimaryActive;
+			}
+
+			&.active {
+				font-weight: bold;
+			}
+		}
+		
+	/*	button {
+			@include mixins.button-reset;
+			border: 1px dashed blue;
+		}*/
+		
+	}
+}

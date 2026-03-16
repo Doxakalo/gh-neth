@@ -1,0 +1,32 @@
+@use '../variables';
+@use '../mixins';
+@use '../grid';
+
+.loading-status {
+	text-align: center;
+	color: variables.$colorGrayText;
+	padding: 1em;
+
+	p {
+		margin: 0;
+	}
+
+	&.loading {
+		&:before {
+			content: '';
+			display: block;
+			width: 3em;
+			height: 3em;
+			margin: 0 auto;
+			margin-bottom: 0.5em;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: contain;
+			background-image: url('../../../images/frontend/spinner-black.svg');
+		}
+	}
+
+	&.error {
+		color: variables.$colorNegative;
+	}
+}

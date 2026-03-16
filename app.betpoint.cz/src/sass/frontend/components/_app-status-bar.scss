@@ -1,0 +1,14 @@
+@use '../variables';
+@use '../mixins';
+@use '../grid';
+
+.app-status-bar {
+	padding: 0.3em 2em;
+	text-align: center;
+	background-color: variables.$colorNegative;
+	color: white;
+
+	p {
+		margin: 0;
+	}
+}

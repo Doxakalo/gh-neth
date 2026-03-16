@@ -1,0 +1,73 @@
+@use '../variables';
+
+.icon {
+	display: inline-block;
+	font-weight: normal !important;
+	font-style: normal !important;
+	text-decoration: none !important;
+
+	&.medium {
+		font-size: 1.5em;
+	}
+
+	&.large {
+		font-size: 2em;
+	}
+}
+
+p {
+	font-size: 1em;
+	line-height: variables.$lineHeightBase;
+	margin-bottom: 1em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+	margin-bottom: 0.5em;
+	line-height: variables.$lineHeightHeading;
+	font-weight: bold;
+}
+
+h1 {
+	font-size: var(--font-size-heading-1);
+	font-weight: variables.$fwLight;
+	margin-bottom: 1em;
+	margin-top: -0.1em;
+}
+
+h2 {
+	font-size: var(--font-size-heading-2);
+
+	.icon {
+		vertical-align: middle;
+		margin-top: -0.15em;
+	}
+}
+
+h3 {
+	font-size: var(--font-size-heading-3);
+}
+
+table {
+	&.data-list {
+		th,
+		td {
+			padding: 0.3em;
+			font-weight: normal;
+		}
+
+		th {
+			padding-left: 0;
+			padding-right: 1em;
+		}
+	}
+}
+
+.last-child-no-margin {
+	>:last-child {
+		margin-bottom: 0;
+	}		
+}

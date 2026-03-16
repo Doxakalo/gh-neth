@@ -1,0 +1,12 @@
+@use '../variables';
+@use '../mixins';
+@use '../grid';
+
+.page.contact {
+	.contact-form-container {
+		textarea[name="message"] {
+			min-height: 10em;
+			max-height: 50vh;
+		}
+	}
+}

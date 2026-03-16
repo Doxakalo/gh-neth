@@ -1,0 +1,38 @@
+name: docker-dev-proxy
+services:
+  nginx-proxy:
+    build: .
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    networks:
+      - proxy-dev-net
+  traefik:
+    image: traefik
+    restart: always
+    command:
+      - "--entrypoints.smtp.address=:25/tcp"
+    ports:
+      - "25:1025"
+    networks:
+      - proxy-dev-net
+
+  mailcatcher:
+    image: dockage/mailcatcher
+    restart: always
+    environment:
+      - VIRTUAL_HOST=mailcatcher.docker
+      - VIRTUAL_PORT=1080
+    labels:
+      - "traefik.tcp.routers.mailcatcher-smtp.rule=HostSNI(`mailcatcher.docker`)"
+      - "traefik.tcp.routers.mailcatcher-smtp.entrypoints=smtp"
+      - "traefik.tcp.routers.mailcatcher-smtp.service=mailcatcher-smtp"
+      - "traefik.tcp.services.mailcatcher-smtp.loadbalancer.server.port=1025"
+    networks:
+      - proxy-dev-net
+
+networks:
+  proxy-dev-net:
+    external: true

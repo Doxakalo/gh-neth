@@ -1,0 +1,71 @@
+@use '../variables';
+@use '../mixins';
+@use '../grid';
+
+.page.account {
+	.account-summary {
+		display: flex;
+		flex-direction: row;
+		gap: 2em;
+
+		// @responsive 
+		@include grid.mq(tablet mobile) {
+			flex-direction: column;
+		}
+
+		.account-details {
+			flex-grow: 1;
+
+			ul {
+				@include mixins.list-reset;
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+				gap: 2.5em;
+				row-gap: 0.25em;
+
+				// @responsive 
+				@include grid.mq(mobile) {
+					flex-direction: column;
+					flex-wrap: nowrap;
+				}
+			}
+		}
+
+		.account-wallet {
+			h2 {
+				white-space: nowrap;
+				line-height: variables.$lineHeightCondensed;
+
+				.icon {
+					margin-left: 0.3em;
+				}
+			}
+
+			.balance {
+				line-height: variables.$lineHeightCondensed;
+
+				strong {
+					font-weight: variables.$fwMedium;
+					font-size: 1.5em;
+				}
+				small {
+					font-size: var(--font-size-tiny);
+				}
+			}
+
+			// @responsive 
+			@include grid.mq(tablet mobile) {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: center;
+				gap: 1em;
+
+				h2 {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+}

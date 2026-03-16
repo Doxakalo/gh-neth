@@ -1,0 +1,5 @@
+export const Constants = {
+	APP_STATUS_REFRESH_INTERVAL: 60000, // ms
+	ACCOUNT_REFRESH_INTERVAL: 10000, // ms
+	MATCH_REFRESH_INTERVAL: 10000, // ms
+} as const;

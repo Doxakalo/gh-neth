@@ -1,0 +1,101 @@
+@use '../variables';
+@use '../mixins';
+
+// table
+.transaction-list {
+	--cell-padding-horizontal: 1em;
+
+	width: 100%;
+	overflow: hidden;
+	border-collapse: separate;
+	border-spacing: 0;
+	border-radius: 0.4em;
+	border: 1px solid variables.$colorGrayMedium;
+	
+	th, 
+	td {
+		padding: 0.65em var(--cell-padding-horizontal);
+		line-height: variables.$lineHeightCondensed;
+		border: none;
+	}
+
+	th {
+		padding: 0.85em var(--cell-padding-horizontal);
+		font-weight: variables.$fwMedium;
+
+		&.action {
+			width: 10em;
+		}
+		&.date {
+			width: 10em;
+		}
+		&.amount {
+			width: 6em;
+			white-space: nowrap;
+		}
+	}
+
+	thead {
+		background-color: variables.$colorGrayDark;
+		color: white;
+
+		th {
+			background-color: transparent;
+		}
+	}
+
+	tbody {
+		tr {
+			&:nth-child(even) {
+				background-color: variables.$colorGrayLight;
+			}
+		}
+	}
+
+	.amount-value {
+		font-family: variables.$fontRoboto;
+		font-weight: variables.$fwMedium;
+
+		&.positive {
+			color: variables.$colorPositive;
+		}
+
+		&.negative {
+			color: variables.$colorNegative;
+		}
+	}
+
+	.secondary-info {
+		color: variables.$colorGrayText;
+		white-space: nowrap;
+		font-weight: variables.$fwLight;
+	}
+}
+
+.transaction-tag-label {
+	display: inline-block;
+	font-size: var(--font-size-small);
+	line-height: 1.2em;
+	padding: 0.2em 0.5em;
+	border-radius: 0.3em;
+	background-color: variables.$colorGrayMedium;
+	color: variables.$colorBodyText;
+	white-space: nowrap;
+
+	&.type-update-credit,
+	&.type-reevaluation {
+		background-color: variables.$colorPrimaryYellow;
+	}
+
+	&.type-bet {
+		background-color: variables.$colorNegative;
+		color: white;
+	}
+	
+	&.type-win,
+	&.type-initial-credit,
+	&.type-return {
+		background-color: variables.$colorPositive;
+		color: white;
+	}
+}

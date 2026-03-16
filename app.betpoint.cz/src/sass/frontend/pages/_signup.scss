@@ -1,0 +1,18 @@
+@use '../variables';
+@use '../mixins';
+@use '../grid';
+
+.page.signup {
+
+	.signup-form-container {
+		max-width: 45em;
+	}
+
+	.signup-success {
+		// @responsive 
+		@include grid.mq(mobile) {
+			text-align: center;
+		}
+	}
+
+}

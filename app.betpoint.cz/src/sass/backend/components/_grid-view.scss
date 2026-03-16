@@ -1,0 +1,65 @@
+@use '../variables';
+
+.grid-view {
+	.table {
+		a {
+			text-decoration: none;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+
+		& > :not(caption) > * > * {
+			box-shadow: none;
+		}
+	
+		thead {
+			background-color: variables.$colorGrayLight;
+
+			tr, td, th  {
+				border: none;
+				background: none;
+			}
+
+			th.sort-disabled {
+				color: variables.$colorGrayExtraDark;
+			}
+
+			a {
+				text-decoration: none;
+			}
+		}
+	
+		tbody {
+			tr {
+				border: none;
+			}
+	
+			td {
+				border: none;
+				background: none;
+			}
+		}
+
+		&.table-bordered  {
+			border-collapse: separate;
+			border-spacing: 0;
+			border: 1px solid variables.$colorGrayMedium;
+		}
+
+		&.table-striped{
+			tbody {
+				tr {
+					&:nth-child(even) {
+						background-color: variables.$colorGrayLight;
+					}
+				}
+			}
+		}
+	}
+
+	.summary {
+		margin-bottom: 0.5em;
+	}
+}

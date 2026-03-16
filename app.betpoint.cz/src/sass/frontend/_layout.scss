@@ -1,0 +1,122 @@
+@use 'variables';
+@use 'mixins';
+@use "grid";
+
+/* Body defaults */
+html {
+	@include mixins.text-size-adjust(100%); //Prevent iOS text size adjust after orientation change, without disabling user zoom
+}
+html, 
+body { 
+	margin: 0px; 
+	padding: 0px;
+	height: 100%;
+	font-size: var(--font-size-base);
+}
+body { 
+	font-family: variables.$fontInter;
+	line-height: variables.$lineHeightBase;
+	background-color: white;
+	text-align: left;
+	min-width: 320px;
+	overflow-x: hidden;
+}
+
+
+/* Extra reset */
+a { outline: none; cursor: pointer; }
+* { background-repeat: no-repeat; }
+textarea, input { outline: none; }
+
+
+/* Layout helpers */
+.nowrap { white-space: nowrap; }
+.tal { text-align: left; }
+.tar { text-align: right; }
+.tac { text-align: center; }
+
+header, 
+footer,
+section {
+	box-sizing: border-box;
+}
+
+// Margin helpers mb-0, mt-0, mb-1, mt-1, etc.
+@for $i from 0 through 5 {
+	.mt-#{$i} {
+		margin-top: #{$i}rem;
+	}
+	.mb-#{$i} {
+		margin-bottom: #{$i}rem;
+	}
+}
+
+#root {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+
+	.page {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+	}
+}
+
+main {
+	flex-grow: 1;
+	box-sizing: border-box;
+	padding: 1.75em 0;
+}
+
+.sidebar-layout {
+	display: flex;
+	flex-direction: row;
+	gap: 2.5em;
+
+	// @responsive
+	@include grid.mq(tablet tablet-narrow) {
+		gap: 1.5em;
+	}
+
+	.sidebar {
+		flex: 0 0 auto;
+		width: 18rem;
+
+		// @responsive
+		@include grid.mq(tablet tablet-narrow) {
+			width: 16rem;
+		}
+		@include grid.mq(mobile) {
+			width: auto;
+		}
+	}
+
+	.main-content {
+		flex-grow: 1;
+	}
+	
+	// @responsive
+	@include grid.mq(mobile) {
+		flex-direction: column;
+		gap: 1.5em;
+	}
+}
+
+.box {
+	background-color: variables.$colorGrayLight;
+	padding: 1.35em 2em;
+
+	// @responsive
+	@include grid.mq(mobile) {
+		padding: 1em 1.25em;
+	}
+
+	&.yellow {
+		background-color: variables.$colorYellowLight;
+	}
+
+	&.rounded {
+		border-radius: 0.35rem;
+	}
+}

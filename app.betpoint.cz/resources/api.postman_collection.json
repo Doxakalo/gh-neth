@@ -1,0 +1,565 @@
+{
+	"info": {
+		"_postman_id": "b17ea4e1-599d-4fdb-b03f-8cd3296a557d",
+		"name": "Sports Betting College",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2210700"
+	},
+	"item": [
+		{
+			"name": "frontend-api",
+			"item": [
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "first_name",
+									"value": "Ludvik",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "Tester",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "ludvik-test-user@24usoftware.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Ludvik123",
+									"type": "text"
+								},
+								{
+									"key": "password_verify",
+									"value": "Ludvik123",
+									"type": "text"
+								},
+								{
+									"key": "agree_terms",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "confirm_age",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "ludvik44-use111r@24usoftware.co44m",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{FRONTEND_API_URL}}signup",
+							"host": [
+								"{{FRONTEND_API_URL}}signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "ludvik-test-user@24usoftware.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Ludvik123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{FRONTEND_API_URL}}login",
+							"host": [
+								"{{FRONTEND_API_URL}}login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{FRONTEND_API_URL}}logout",
+							"host": [
+								"{{FRONTEND_API_URL}}logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "account",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"url": {
+							"raw": "{{FRONTEND_API_URL}}account",
+							"host": [
+								"{{FRONTEND_API_URL}}account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "app-status",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"url": {
+							"raw": "{{FRONTEND_API_URL}}app-status",
+							"host": [
+								"{{FRONTEND_API_URL}}app-status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sports",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"url": {
+							"raw": "{{FRONTEND_API_URL}}sports",
+							"host": [
+								"{{FRONTEND_API_URL}}sports"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "sports",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"url": {
+									"raw": "{{FRONTEND_API_URL}}sports",
+									"host": [
+										"{{FRONTEND_API_URL}}sports"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.5"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 30 Jul 2025 07:28:34 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 19 Nov 1981 08:52:00 GMT"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store, no-cache, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_identity-sbc=ea84d65776099dc67d2a61fd573678acd4e5ca4565e338a18fa510d2b055fdffa%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_identity-sbc%22%3Bi%3A1%3Bs%3A46%3A%22%5B3%2C%221C1ArNspQ12rJJ6s62QAorgRkniAs6lh%22%2C2592000%5D%22%3B%7D; expires=Fri, 29 Aug 2025 07:28:34 GMT; Max-Age=2592000; path=/; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": null,\n    \"sports\": [\n        {\n            \"id\": 3,\n            \"name\": \"Baseball\",\n            \"alias\": \"baseball\",\n            \"categories\": [\n                {\n                    \"id\": 1245,\n                    \"name\": \"MLB\",\n                    \"sport_id\": 3,\n                    \"match_count\": 1\n                }\n            ]\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Basketball\",\n            \"alias\": \"basketball\",\n            \"categories\": [\n                {\n                    \"id\": 1652,\n                    \"name\": \"NBA W\",\n                    \"sport_id\": 4,\n                    \"match_count\": 1\n                }\n            ]\n        },\n        {\n            \"id\": 1,\n            \"name\": \"Football\",\n            \"alias\": \"football\",\n            \"categories\": [\n                {\n                    \"id\": 13,\n                    \"name\": \"Championship\",\n                    \"sport_id\": 1,\n                    \"match_count\": 5\n                },\n                {\n                    \"id\": 4,\n                    \"name\": \"Jupiler Pro League\",\n                    \"sport_id\": 1,\n                    \"match_count\": 8\n                },\n                {\n                    \"id\": 23,\n                    \"name\": \"League Two\",\n                    \"sport_id\": 1,\n                    \"match_count\": 12\n                },\n                {\n                    \"id\": 32,\n                    \"name\": \"Premier League\",\n                    \"sport_id\": 1,\n                    \"match_count\": 8\n                },\n                {\n                    \"id\": 12,\n                    \"name\": \"Premiership\",\n                    \"sport_id\": 1,\n                    \"match_count\": 6\n                },\n                {\n                    \"id\": 5,\n                    \"name\": \"Serie A\",\n                    \"sport_id\": 1,\n                    \"match_count\": 19\n                },\n                {\n                    \"id\": 18,\n                    \"name\": \"UEFA Champions League\",\n                    \"sport_id\": 1,\n                    \"match_count\": 11\n                }\n            ]\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Handball\",\n            \"alias\": \"handball\",\n            \"categories\": []\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Hockey\",\n            \"alias\": \"hockey\",\n            \"categories\": []\n        },\n        {\n            \"id\": 7,\n            \"name\": \"NFL\",\n            \"alias\": \"nfl\",\n            \"categories\": []\n        },\n        {\n            \"id\": 6,\n            \"name\": \"Rugby\",\n            \"alias\": \"rugby\",\n            \"categories\": []\n        },\n        {\n            \"id\": 9,\n            \"name\": \"Volleyball\",\n            \"alias\": \"volleyball\",\n            \"categories\": []\n        }\n    ]\n}"
+						},
+						{
+							"name": "sports",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"url": {
+									"raw": "{{FRONTEND_API_URL}}sports",
+									"host": [
+										"{{FRONTEND_API_URL}}sports"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.27.5"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 30 Jul 2025 07:29:13 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 19 Nov 1981 08:52:00 GMT"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store, no-cache, must-revalidate"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "_identity-sbc=ea84d65776099dc67d2a61fd573678acd4e5ca4565e338a18fa510d2b055fdffa%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_identity-sbc%22%3Bi%3A1%3Bs%3A46%3A%22%5B3%2C%221C1ArNspQ12rJJ6s62QAorgRkniAs6lh%22%2C2592000%5D%22%3B%7D; expires=Fri, 29 Aug 2025 07:29:13 GMT; Max-Age=2592000; path=/; HttpOnly; SameSite=Lax"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"message\": null,\n    \"sports\": [\n        {\n            \"id\": 3,\n            \"name\": \"Baseball\",\n            \"alias\": \"baseball\",\n            \"categories\": [\n                {\n                    \"id\": 1245,\n                    \"name\": \"MLB\",\n                    \"sport_id\": 3,\n                    \"match_count\": 1\n                }\n            ]\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Basketball\",\n            \"alias\": \"basketball\",\n            \"categories\": [\n                {\n                    \"id\": 1652,\n                    \"name\": \"NBA W\",\n                    \"sport_id\": 4,\n                    \"match_count\": 1\n                }\n            ]\n        },\n        {\n            \"id\": 1,\n            \"name\": \"Football\",\n            \"alias\": \"football\",\n            \"categories\": [\n                {\n                    \"id\": 13,\n                    \"name\": \"Championship\",\n                    \"sport_id\": 1,\n                    \"match_count\": 5\n                },\n                {\n                    \"id\": 4,\n                    \"name\": \"Jupiler Pro League\",\n                    \"sport_id\": 1,\n                    \"match_count\": 8\n                },\n                {\n                    \"id\": 23,\n                    \"name\": \"League Two\",\n                    \"sport_id\": 1,\n                    \"match_count\": 12\n                },\n                {\n                    \"id\": 32,\n                    \"name\": \"Premier League\",\n                    \"sport_id\": 1,\n                    \"match_count\": 8\n                },\n                {\n                    \"id\": 12,\n                    \"name\": \"Premiership\",\n                    \"sport_id\": 1,\n                    \"match_count\": 6\n                },\n                {\n                    \"id\": 5,\n                    \"name\": \"Serie A\",\n                    \"sport_id\": 1,\n                    \"match_count\": 19\n                },\n                {\n                    \"id\": 18,\n                    \"name\": \"UEFA Champions League\",\n                    \"sport_id\": 1,\n                    \"match_count\": 11\n                }\n            ]\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Handball\",\n            \"alias\": \"handball\",\n            \"categories\": []\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Hockey\",\n            \"alias\": \"hockey\",\n            \"categories\": []\n        },\n        {\n            \"id\": 7,\n            \"name\": \"NFL\",\n            \"alias\": \"nfl\",\n            \"categories\": []\n        },\n        {\n            \"id\": 6,\n            \"name\": \"Rugby\",\n            \"alias\": \"rugby\",\n            \"categories\": []\n        },\n        {\n            \"id\": 9,\n            \"name\": \"Volleyball\",\n            \"alias\": \"volleyball\",\n            \"categories\": []\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "transactions",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"url": {
+							"raw": "{{FRONTEND_API_URL}}transactions?page=1",
+							"host": [
+								"{{FRONTEND_API_URL}}transactions"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5",
+									"description": "enable to override default pageSize",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "bets",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"url": {
+							"raw": "{{FRONTEND_API_URL}}bets?page=1",
+							"host": [
+								"{{FRONTEND_API_URL}}bets"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5",
+									"description": "enable to override default pageSize",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "leaderboard",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"url": {
+							"raw": "{{FRONTEND_API_URL}}leaderboard",
+							"host": [
+								"{{FRONTEND_API_URL}}leaderboard"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5",
+									"description": "enable to override default pageSize",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sport-matches",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"url": {
+							"raw": "{{FRONTEND_API_URL}}sport-matches?categoryId=18",
+							"host": [
+								"{{FRONTEND_API_URL}}sport-matches"
+							],
+							"query": [
+								{
+									"key": "categoryId",
+									"value": "18"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "contact-form",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "topic",
+									"value": "some topic",
+									"type": "text"
+								},
+								{
+									"key": "message",
+									"value": "message",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{FRONTEND_API_URL}}contact-form",
+							"host": [
+								"{{FRONTEND_API_URL}}contact-form"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "complaint-form",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "bet_id",
+									"value": "64",
+									"type": "text"
+								},
+								{
+									"key": "message",
+									"value": "message",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{FRONTEND_API_URL}}complaint-form",
+							"host": [
+								"{{FRONTEND_API_URL}}complaint-form"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "bet",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "odd_id",
+									"value": "24860",
+									"type": "text"
+								},
+								{
+									"key": "amount",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{FRONTEND_API_URL}}bet",
+							"host": [
+								"{{FRONTEND_API_URL}}bet"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "FRONTEND_API_URL",
+			"value": "http://sports-betting-college.docker/api/",
+			"type": "string"
+		}
+	]
+}

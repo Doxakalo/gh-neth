@@ -1,0 +1,29 @@
+@use '../variables';
+@use '../mixins';
+@use '../grid';
+
+.complaint-modal {
+	.inner {
+		max-width: 32em;
+	}
+	
+
+	form {
+		textarea[name="message"] {
+			min-height: 6em;
+		}
+	}
+
+	.complaint-form-success {
+		text-align: center;
+	
+		h3 {
+			margin: 0 auto;
+			margin-bottom: 1.5em;
+		}
+	
+		p {
+			margin-bottom: 2em;
+		}
+	}
+}

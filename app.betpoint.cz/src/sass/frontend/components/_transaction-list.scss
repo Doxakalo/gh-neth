@@ -1,0 +1,156 @@
+@use '../variables';
+@use '../mixins';
+@use '../grid';
+
+// table
+.transaction-list {
+	--cell-padding: 0.65em 1em;
+	--cell-padding-header: 0.85em 1em;
+
+	width: 100%;
+	overflow: hidden;
+	border-collapse: separate;
+	border-spacing: 0;
+	border-radius: 0.4em;
+	border: 1px solid variables.$colorGrayMedium;
+	
+	// @responsive
+	@include grid.mq(mobile) {
+		--cell-padding: 0.45em 1em;
+	}
+
+	th, 
+	td {
+		padding: var(--cell-padding);
+		border: none;
+
+		// @responsive
+		@include grid.mq(tablet mobile) {
+			font-size: var(--font-size-small);
+		}
+	}
+
+	th {
+		padding: var(--cell-padding-header);
+		font-weight: variables.$fwMedium;
+
+		&.action {
+			width: 9em;
+		}
+		&.date {
+			width: 10em;
+		}
+		&.amount {
+			width: 6em;
+			white-space: nowrap;
+		}
+
+		// @responsive
+		@include grid.mq(mobile) {
+			&.action,
+			&.date,
+			&.amount {
+				width: auto;
+			}
+		}
+	}
+
+	thead {
+		background-color: variables.$colorGrayDark;
+		color: white;
+
+		th {
+			background-color: transparent;
+		}
+
+		// @responsive
+		@include grid.mq(mobile) {
+			display: none;
+		}
+	}
+
+	tbody {
+		tr {
+			&:nth-child(even) {
+				background-color: variables.$colorGrayLight;
+			}
+		}
+
+		td {
+			.cell-header {
+				display: none;
+				font-weight: variables.$fwMedium;
+				text-align: left;
+			}
+
+			// @responsive
+			@include grid.mq(mobile) {
+				display: flex;
+				justify-content: space-between;
+				gap: 1.5em;
+				text-align: right;
+
+				&:first-of-type {
+					padding-top: 1em;
+				}
+				&:last-of-type {
+					padding-bottom: 1em;
+				}
+				&:not(:last-of-type) {
+					border-bottom: 1px solid rgba(black, 0.05);
+				}
+
+				.cell-header {
+					display: block;
+				}
+			}
+		}
+	}
+
+	.amount-value {
+		font-family: variables.$fontRoboto;
+		font-weight: variables.$fwMedium;
+		
+		&.positive {
+			color: variables.$colorPositive;
+		}
+
+		&.negative {
+			color: variables.$colorNegative;
+		}
+	}
+
+	.secondary-info {
+		color: variables.$colorGrayText;
+		white-space: nowrap;
+		font-weight: variables.$fwLight;
+	}
+}
+
+.transaction-tag-label {
+	display: inline-block;
+	font-size: var(--font-size-small);
+	line-height: 1.2em;
+	padding: 0.2em 0.5em;
+	border-radius: 0.3em;
+	background-color: variables.$colorGrayMedium;
+	color: variables.$colorBodyText;
+	white-space: nowrap;
+
+	&.type-update-credit,
+	&.type-reevaluation {
+		background-color: variables.$colorPrimaryYellow;
+	}
+
+	&.type-bet {
+		background-color: variables.$colorNegative;
+		color: white;
+	}
+	
+	&.type-win,
+	&.type-initial-credit,
+	&.type-return {
+		background-color: variables.$colorPositive;
+		color: white;
+	}
+}

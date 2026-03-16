@@ -1,0 +1,97 @@
+@use '../variables';
+@use '../mixins';
+@use '../grid';
+
+.button {
+	@include mixins.button-reset;
+	
+	display: inline-block;
+	background-color: black;
+	color: white;
+	text-align: center;
+	font-family: variables.$fontInter;
+	font-size: 1em;
+	line-height: 1em;
+	font-weight: variables.$fwMedium;
+	text-decoration: none;
+	min-width: 5em;
+	white-space: nowrap;
+	padding: 0.8em 1.7em;
+	margin: 0;
+	outline: 0;
+	border-radius: 0.4rem;
+	
+	// @animation	
+	@include mixins.link-transition;
+	
+	&:focus {
+		outline: 0;
+	}
+	
+	@include mixins.hover-enabled {
+		&:hover {
+			color: white;
+			text-decoration: none;
+			background-color: variables.$colorPrimaryActive;
+		}
+	}
+	@include mixins.touch-enabled {
+		&:active {
+			color: white;
+			text-decoration: none;
+			background-color: variables.$colorPrimaryActive;
+		}
+	}
+	
+	// @responsive
+	@include grid.mq(mobile) {
+		font-size: 1em;
+	}
+
+	/* Size variants */
+	&.small {
+		font-size: var(--font-size-small);
+		padding: 0.4em 1em;
+	}
+
+	/* State variants */
+	&.loading {
+		color: transparent;
+		background-color: variables.$colorGrayDark;
+		background-image: url('../../../images/frontend/spinner-white.svg');
+		background-size: 1.75em;
+		background-repeat: no-repeat;
+		background-position: center;
+		cursor: default;
+		pointer-events: none;
+	}
+
+	&.disabled,
+	&[disabled] {
+		opacity: 0.4;
+		cursor: not-allowed;
+		pointer-events: none;
+	}
+}
+
+.button-close {
+	$size: 2rem;
+
+	@include mixins.button-reset;
+	width: $size;
+	height: $size;
+	text-align: center;
+	color: variables.$colorBodyText;
+
+	&:after {
+		@include mixins.icon-font;
+		content: variables.$sbc-icon-close;
+		font-size: 1.25em;
+	}
+
+	@include mixins.hover-enabled {
+		&:hover {
+			color: variables.$colorPrimaryActive;
+		}
+	}
+}

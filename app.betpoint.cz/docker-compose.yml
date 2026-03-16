@@ -1,0 +1,69 @@
+name: sports-betting-college
+
+services:
+
+  frontend:
+    build: frontend
+    volumes:
+      # Re-use local composer cache via host-volume
+      - ~/.composer-docker/cache:/root/.composer/cache:delegated
+      # Mount source-code for development
+      - ./:/app
+    environment:
+      - VIRTUAL_HOST=${DOMAIN}
+    networks:
+      - proxy-dev-net
+
+  backend:
+    container_name: betpoint
+    build: backend
+    volumes:
+      # Re-use local composer cache via host-volume
+      - ~/.composer-docker/cache:/root/.composer/cache:delegated
+      # Mount source-code for development
+      - ./:/app
+    environment:
+      - VIRTUAL_HOST=admin.${DOMAIN}
+    networks:
+      - proxy-dev-net
+
+  db:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      MYSQL_DATABASE: "${MYSQL_DATABASE}"
+      MYSQL_USER: "${MYSQL_USER}"
+      MYSQL_PASSWORD: "${MYSQL_PASSWORD}"
+    hostname: "db.${DOMAIN}"
+    ports:
+      - "3333:3306" # for local dev
+    command:
+      - --sort_buffer_size=64M
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    networks:
+      proxy-dev-net:
+
+  cron:
+    build: cron
+    volumes:
+      - ./:/app
+    environment:
+      - TZ=Europe/Prague
+    networks:
+      - proxy-dev-net
+
+  phpmyadmin:
+    image: phpmyadmin
+    depends_on:
+      - db
+    environment:
+      - UPLOAD_LIMIT=102400K
+      - VIRTUAL_HOST=pma.${DOMAIN}
+      - PMA_HOST=db.${DOMAIN}
+    networks:
+      - proxy-dev-net
+
+networks:
+  proxy-dev-net:
+    external: true

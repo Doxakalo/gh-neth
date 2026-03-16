@@ -1,0 +1,46 @@
+@font-face {
+  font-family: "sbc-icon";
+  src: url('sbc-icon.eot?t=1756905685264'); /* IE9*/
+  src: url('sbc-icon.eot?t=1756905685264#iefix') format('embedded-opentype') /* IE6-IE8 */,
+  url('sbc-icon.woff2?t=1756905685264') format('woff2'),
+  url('sbc-icon.woff?t=1756905685264') format('woff'),
+  url('sbc-icon.ttf?t=1756905685264') format('truetype'),
+  url('sbc-icon.svg?t=1756905685264') format('svg');
+}
+
+[class^="sbc-icon-"], [class*=" sbc-icon-"] {
+  font-family: 'sbc-icon' !important;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.sbc-icon-arrow-down::before { content: "\ea01"; }
+.sbc-icon-arrow-left::before { content: "\ea02"; }
+.sbc-icon-arrow-right::before { content: "\ea03"; }
+.sbc-icon-arrow-up::before { content: "\ea04"; }
+.sbc-icon-caret-double-left::before { content: "\ea05"; }
+.sbc-icon-caret-double-right::before { content: "\ea06"; }
+.sbc-icon-caret-down::before { content: "\ea07"; }
+.sbc-icon-caret-left::before { content: "\ea08"; }
+.sbc-icon-caret-right::before { content: "\ea09"; }
+.sbc-icon-caret-up::before { content: "\ea0a"; }
+.sbc-icon-close::before { content: "\ea0b"; }
+.sbc-icon-emoji-sad::before { content: "\ea0c"; }
+.sbc-icon-emoji-smile::before { content: "\ea0d"; }
+.sbc-icon-home::before { content: "\ea0e"; }
+.sbc-icon-logout::before { content: "\ea0f"; }
+.sbc-icon-mail::before { content: "\ea10"; }
+.sbc-icon-money::before { content: "\ea11"; }
+.sbc-icon-sport-baseball::before { content: "\ea12"; }
+.sbc-icon-sport-basketball::before { content: "\ea13"; }
+.sbc-icon-sport-football::before { content: "\ea14"; }
+.sbc-icon-sport-handball::before { content: "\ea15"; }
+.sbc-icon-sport-hockey::before { content: "\ea16"; }
+.sbc-icon-sport-mma::before { content: "\ea17"; }
+.sbc-icon-sport-nfl::before { content: "\ea18"; }
+.sbc-icon-sport-rugby::before { content: "\ea19"; }
+.sbc-icon-sport-volleyball::before { content: "\ea1a"; }
+
+

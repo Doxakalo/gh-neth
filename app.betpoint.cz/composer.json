@@ -1,0 +1,49 @@
+{
+    "name": "nethor/sports-betting-college",
+    "description": "",
+    "type": "project",
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=8.4.0",
+        "yiisoft/yii2": "~2.0.52",
+        "yiisoft/yii2-bootstrap5": "~2.0.2",
+        "yiisoft/yii2-httpclient": "~2.0.0",
+        "yiisoft/yii2-symfonymailer": "~2.0.3",
+        "pelago/emogrifier": "^7.3",
+        "html2text/html2text": "^4.3"
+    },
+    "require-dev": {
+        "yiisoft/yii2-debug": "~2.1.0",
+        "yiisoft/yii2-gii": "~2.2.0",
+        "yiisoft/yii2-faker": "~2.0.0",
+        "phpunit/phpunit": "~9.5.0",
+        "codeception/codeception": "^5.0.0 || ^4.0",
+        "codeception/lib-innerbrowser": "^4.0 || ^3.0 || ^1.1",
+        "codeception/module-asserts": "^3.0 || ^1.1",
+        "codeception/module-yii2": "^1.1",
+        "codeception/module-filesystem": "^3.0 || ^2.0 || ^1.1",
+        "codeception/verify": "^3.0 || ^2.2"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "common\\tests\\": ["common/tests/", "common/tests/_support"],
+            "backend\\tests\\": ["backend/tests/", "backend/tests/_support"],
+            "frontend\\tests\\": ["frontend/tests/", "frontend/tests/_support"]
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "yiisoft/yii2-composer" : true
+        },
+        "process-timeout": 1800,
+        "fxp-asset": {
+            "enabled": false
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ]
+}

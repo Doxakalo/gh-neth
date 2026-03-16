@@ -1,0 +1,221 @@
+@use '../variables';
+@use '../mixins';
+
+.icon {
+	display: inline-block;
+	font-weight: normal !important;
+	font-style: normal !important;
+	text-decoration: none !important;
+
+	&.medium {
+		font-size: 1.5em;
+	}
+
+	&.large {
+		font-size: 2em;
+	}
+}
+
+p {
+	font-size: 1em;
+	line-height: variables.$lineHeightBase;
+	margin-bottom: 1em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+	margin-bottom: 0.5em;
+	line-height: variables.$lineHeightHeading;
+	font-weight: bold;
+}
+
+h1,
+.h1 {
+	font-size: var(--font-size-heading-1);
+	font-weight: variables.$fwLight;
+	margin-bottom: 1em;
+	margin-top: -0.1em;
+}
+
+h2,
+.h2 {
+	font-size: var(--font-size-heading-2);
+
+	.icon {
+		vertical-align: middle;
+		margin-top: -0.15em;
+	}
+}
+
+h3 {
+	font-size: var(--font-size-heading-3);
+}
+
+h4 {
+	font-size: var(--font-size-heading-4);
+}
+
+h5 {
+	font-size: 1.05em;	
+}
+
+sub, sup { 
+	font-size: .83em;
+	vertical-align: baseline;
+	position: relative;
+	top: -0.4em;
+}
+
+sub { 
+	top: 0.4em;
+}
+
+strong, b, 
+.strong {
+	font-weight: bold;
+}
+
+em, i {
+	font-style: italic;
+}
+
+small,
+.small {
+	font-size: var(--font-size-small);
+}
+
+a {
+	color: variables.$colorBodyText;
+	text-decoration: underline;
+	
+	// @animation
+	@include mixins.link-transition;
+	
+	&:hover {
+		color: variables.$colorPrimaryActive;
+		text-decoration: underline;
+	}
+
+	// on black background
+	.bg-dark & {
+		color: white;
+
+		&:hover {
+			color: variables.$colorPrimaryYellow;
+		}
+	}
+
+	&.icon-right {
+		.icon {
+			margin-left: 0.5em;
+			vertical-align: middle;
+			margin-top: -0.15em;
+		}
+	}
+}
+
+
+table {
+	margin-bottom: 1em;
+	
+	td, th {
+		text-align: left;
+		vertical-align: top;
+		padding: 0.3em 0.5em;
+		border: 1px solid variables.$colorGrayMedium;
+		line-height: variables.$lineHeightCondensed;
+	}
+	
+	th {
+		background-color: variables.$colorGrayMedium;
+		font-weight: bold;
+	}
+
+	&.data-list {
+		border: none;
+
+		th,
+		td {
+			padding: 0.3em;
+			font-weight: normal;
+			background-color: transparent;
+			border: none;
+			line-height: variables.$lineHeightBase;
+		}
+
+		th {
+			padding-left: 0;
+			padding-right: 1em;
+			padding-bottom: 0.75em;
+		}
+
+		&.header-nowrap {
+			th {
+				white-space: nowrap;
+			}
+		}
+	}
+}
+
+ul,
+ol {
+	margin-bottom: 1em;	
+
+	li {
+		margin-left: 1.5em;
+		font-size: 1em;
+		line-height: variables.$lineHeightBase;
+	}
+
+	ul, ol {
+		margin-bottom: 0;
+	}
+}
+
+ul {
+	list-style: disc;
+}
+
+ol {
+	list-style: decimal;
+}
+
+hr {
+	border: none;
+	height: 0;
+	border-top: 1px solid variables.$colorGrayMedium;
+	margin: 1.5em 0;
+}
+
+// extra indentation of headers after elements
+p + h2,
+p + h3,
+p + h4,
+p + h5,
+table + h2,
+table + h3,
+table + h4,
+table + h5,
+ul + h2,
+ul + h3,
+ul + h4,
+ul + h5,
+ol + h2,
+ol + h3,
+ol + h4,
+ol + h5 {
+	padding-top: 0.3em;
+}
+
+.last-child-no-margin {
+	>:last-child {
+		margin-bottom: 0;
+	}		
+}
+
+.text-gray {
+	color: variables.$colorGrayText;
+}

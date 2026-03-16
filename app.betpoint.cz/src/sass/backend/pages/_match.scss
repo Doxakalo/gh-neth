@@ -1,0 +1,15 @@
+@use '../variables';
+@use '../mixins';
+
+.sport-match-view {
+	.update-result-form-container {
+
+		.score-inputs {
+			max-width: 20em;
+
+			@media (max-width: 991.98px) {
+				max-width: 100%;
+			}
+		}
+	}
+}

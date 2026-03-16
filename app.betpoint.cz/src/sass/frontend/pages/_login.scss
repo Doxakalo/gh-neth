@@ -1,0 +1,95 @@
+@use '../variables';
+@use '../mixins';
+@use '../grid';
+
+.page.login {
+	text-align: center;
+
+	.intro {
+		max-width: 45em;
+		margin: 0 auto;
+		margin-bottom: 3em;
+
+		// @responsive
+		@include grid.mq(desktop-large desktop tablet) {
+			@media (max-height: 700px) {
+				margin-bottom: 1.5em;
+			}
+		}
+		@include grid.mq(mobile) {
+			margin-bottom: 2em;
+		}
+
+		img {
+			display: block;
+			width: 100%;
+			max-width: 16em;
+			height: auto;
+			margin: 0 auto;
+			margin-bottom: 3em;
+
+			// @responsive
+			@include grid.mq(desktop-large desktop tablet) {
+				@media (max-height: 700px) {
+					max-width: 14em;
+					margin-bottom: 1.5em;
+				}
+			}
+			@include grid.mq(mobile) {
+				width: 60vw;
+				margin-bottom: 1.5em;
+			}
+			@include grid.mq(mobile-small) {
+				width: 45vw;
+				margin-bottom: 1.25em;
+				
+			}
+		}
+
+		h1 {
+			font-size: 1.75em;
+
+			// @responsive
+			@include grid.mq(mobile) {
+				font-size: 1.5em;
+				font-weight: normal;
+				margin-bottom: 0.75em;
+			}
+			@include grid.mq(mobile-small) {
+				font-size: 1.25em;
+			}
+		}
+	}
+
+
+	.login-form-container {
+		max-width: 22em;
+		margin: 0 auto;
+
+		h2 {
+			margin-bottom: 1em;
+		}
+
+		form {
+			max-width: 18em;
+			text-align: left;
+			margin: 0 auto;
+			margin-bottom: 2em;
+
+			.button-container {
+				text-align: center;
+			}
+		}
+
+		.app-status-error {
+			margin-bottom: 1em;
+			padding: 0.5em 1em;
+			border-radius: 0.2em;
+			font-size: var(--font-size-small);
+			line-height: variables.$lineHeightCondensed;
+			text-align: center;
+			background-color: variables.$colorNegative;
+			color: white;
+		}
+	}
+}

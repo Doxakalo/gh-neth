@@ -1,0 +1,439 @@
+@use '../variables';
+@use '../mixins';
+@use '../grid';
+
+.match-list {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+}
+
+.match-item {
+	box-sizing: border-box;
+	user-select: none;
+	background-color: variables.$colorGrayLight;
+	border-radius: 0.4em;
+	display: flex;
+	flex-direction: column;
+
+	// @animation		
+	transition-property: background-color;
+	transition-duration: variables.$hoverAnimationDuration;
+	transition-timing-function: ease-out;	
+
+	&.open {
+		background-color: variables.$colorYellowLight;
+	}
+
+	@include mixins.hover-enabled {
+		&:hover:not(.open):not(.disabled) {
+			background-color: variables.$colorYellowLight;
+			cursor: pointer;
+		}
+	}
+
+	&.disabled {
+		pointer-events: none;
+	}
+
+	.heading {
+		padding: 1.25rem 0.6rem;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 2em;
+		line-height: variables.$lineHeightCondensed;
+
+		// @responsive 
+		@include grid.mq(mobile) {
+			gap: 1.5em;
+		}
+
+		.info {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			flex-grow: 1;
+			gap: 1em;
+
+			// @responsive 
+			@include grid.mq(tablet-narrow mobile) {
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 0.5em;
+				padding-top: 1em;
+			}
+
+			.match-name {
+				font-size: 1rem;
+				font-weight: variables.$fwMedium;
+				margin: 0;
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+				row-gap: 1.5em;
+				flex-grow: 1;
+	
+				.field {
+					position: relative;
+					display: block;
+	
+					.label {
+						position: absolute;
+						display: inline-block;
+						top: -1.4em;
+						font-size: var(--font-size-tiny);
+						color: variables.$colorGrayText;
+						font-weight: normal;
+					}
+	
+					&.separator {
+						padding: 0 0.3em;
+					}
+				}
+			}
+	
+			.match-date {
+				flex: 0 1 45%;
+				font-size: var(--font-size-small);
+				text-align: left;
+			}
+		}
+
+		.controls {
+			flex: 0 0 7em;
+			text-align: right;
+
+			// @responsive 
+			@include grid.mq(mobile) {
+				flex-basis: 5em;
+			}
+		}
+
+		.toggle {
+			font-size: var(--font-size-small);
+			cursor: pointer;
+			white-space: nowrap;
+
+			> span {
+				&.label {
+					display: inline-block;
+					// @responsive 
+					@include grid.mq(mobile) {
+						display: none;
+					}
+				}
+				&.label-mobile {
+					display: none;
+					// @responsive 
+					@include grid.mq(mobile) {
+						display: inline-block;
+					}
+				}
+			}
+
+			.caret {
+				vertical-align: middle;
+				margin-top: -0.15em;
+				margin-left: 0.25em;
+				font-size: 1.2em;
+				transition: transform variables.$hoverAnimationDuration ease-out;
+
+				// @responsive 
+				@include grid.mq(mobile) {
+					font-size: 1.35em;
+				}
+			}
+
+			&.open {
+				.caret {
+					transform: rotate(180deg);
+				}
+			}
+		}
+	}
+
+	.status-label {
+		display: inline-block;
+		padding: 0.15em 0.5em;
+		border-radius: 0.15em;
+		font-size: var(--font-size-small);
+		line-height: variables.$lineHeightCondensed;
+		background-color: variables.$colorGrayMedium;
+
+		&.in-progress {
+			background-color: variables.$colorPositiveSecondary;
+			font-weight: variables.$fwMedium;
+		}
+	}
+}
+
+.odd-group-list {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5em;
+	padding: 0.6rem;
+	padding-top: 1em;
+
+	.odd-group {
+		h3 {
+			font-size: 1rem;
+			font-weight: variables.$fwMedium;
+			margin: 0;
+			margin-bottom: 0.4em;
+		}
+	}
+}
+
+.odd-list {
+	--gap: 0.5em;
+	
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--gap);
+	
+	.odd-item {
+		@include mixins.button-reset;
+		@include mixins.link-transition;
+		width: calc(50% - var(--gap) / 2);
+		box-sizing: border-box;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		background-color: rgba(black, 0.07);
+		color: variables.$colorBodyText;
+		padding: 0.5em 0.5em;
+		border-radius: 0.3em;
+		gap: var(--gap);
+		
+		// @responsive 
+		@include grid.mq(mobile) {
+			width: 100%;
+		}
+	
+		.label {
+			display: inline-block;
+			@include mixins.ellipsis;
+		}
+		.value {
+			@include mixins.link-transition;
+			display: inline-block;
+			font-family: variables.$fontRoboto;
+			font-weight: variables.$fwMedium;
+			text-align: center;
+			line-height: 1em;
+			padding: 0.3em 0.4em 0.25em;
+			border-radius: 1em;
+			background-color: black;
+			color: white;
+			min-width: 1.5em;
+		}
+	
+		@mixin hover-styles {
+			background-color: black;
+			color: white;
+	
+			.value {
+				background-color: variables.$colorPrimaryYellow;
+				color: black;
+			}
+		}
+		@include mixins.hover-enabled {
+			&:hover {
+				@include hover-styles;
+			}
+		}
+		@include mixins.touch-enabled {
+			&:active {
+				@include hover-styles;
+			}
+		}
+	}
+
+	.odd-item-3 {
+			@include mixins.button-reset;
+			@include mixins.link-transition;
+			width: calc(33.333% - (2 * var(--gap) / 3));
+			box-sizing: border-box;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			background-color: rgba(black, 0.07);
+			color: variables.$colorBodyText;
+			padding: 0.5em 0.5em;
+			border-radius: 0.3em;
+			gap: var(--gap);
+
+			// @responsive
+			@include grid.mq(mobile) {
+				width: 100%;
+			}
+
+			@include grid.mq(mobile) {
+			width: 100%;
+		}
+	
+		.label {
+			display: inline-block;
+			@include mixins.ellipsis;
+		}
+		.value {
+			@include mixins.link-transition;
+			display: inline-block;
+			font-family: variables.$fontRoboto;
+			font-weight: variables.$fwMedium;
+			text-align: center;
+			line-height: 1em;
+			padding: 0.3em 0.4em 0.25em;
+			border-radius: 1em;
+			background-color: black;
+			color: white;
+			min-width: 1em;
+		}
+	
+		@mixin hover-styles {
+			background-color: black;
+			color: white;
+	
+			.value {
+				background-color: variables.$colorPrimaryYellow;
+				color: black;
+			}
+		}
+		@include mixins.hover-enabled {
+			&:hover {
+				@include hover-styles;
+			}
+		}
+		@include mixins.touch-enabled {
+			&:active {
+				@include hover-styles;
+			}
+		}
+	}
+
+	// 3-column odd group
+	&.odd-list-3-col {
+		flex-wrap: nowrap;
+
+		// @responsive 
+		@include grid.mq(mobile) {
+			flex-wrap: wrap;
+		}
+
+		.odd-item {
+			width: calc(33% - (var(--gap) / 3));
+
+			// @responsive 
+			@include grid.mq(mobile) {
+				width: 100%;	
+			}
+		}
+	}
+
+	.odd-item-4 {
+			@include mixins.button-reset;
+			@include mixins.link-transition;
+			width: calc(25% - ((3 / 4) * var(--gap)));
+			box-sizing: border-box;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			background-color: rgba(black, 0.07);
+			color: variables.$colorBodyText;
+			padding: 0.5em 0.5em;
+			border-radius: 0.3em;
+			gap: var(--gap);
+
+			// @responsive
+			@include grid.mq(mobile) {
+				width: 100%;
+			}
+
+			/*@include grid.mq(tablet) {
+				width: calc(33.333% - ((2 / 3) * var(--gap))) !important;
+			}*/
+			@include grid.mq(mid-desktop-tablet) {
+				width: calc(50% - (var(--gap) / 2)) !important;
+			}
+			
+			@include grid.mq(tablet) {
+				width: calc(50% - (var(--gap) / 2)) !important;
+			}
+
+			@include grid.mq(tablet-narrow) {
+				width: calc(50% - (var(--gap) / 2)) !important;
+			}
+	
+		.label {
+			display: inline-block;
+			@include mixins.ellipsis;
+		}
+		.value {
+			@include mixins.link-transition;
+			display: inline-block;
+			font-family: variables.$fontRoboto;
+			font-weight: variables.$fwMedium;
+			text-align: center;
+			line-height: 1em;
+			padding: 0.3em 0.4em 0.25em;
+			border-radius: 1em;
+			background-color: black;
+			color: white;
+			min-width: 1.5em;
+		}
+	
+		@mixin hover-styles {
+			background-color: black;
+			color: white;
+	
+			.value {
+				background-color: variables.$colorPrimaryYellow;
+				color: black;
+			}
+		}
+		@include mixins.hover-enabled {
+			&:hover {
+				@include hover-styles;
+			}
+		}
+		@include mixins.touch-enabled {
+			&:active {
+				@include hover-styles;
+			}
+		}
+	}
+
+	// 3-column odd group
+	.odd-list-4-col {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--gap);
+
+		.odd-item {
+			width: calc(25% - ((3 / 4) * var(--gap))) !important; // desktop
+
+			// tablet
+			/*@include grid.mq(tablet) {
+				width: calc(33.333% - ((2 / 3) * var(--gap))) !important;
+			}*/
+			@include grid.mq(mid-desktop-tablet) {
+				width: calc(50% - (var(--gap) / 2)) !important;
+			}
+			@include grid.mq(tablet) {
+				width: calc(50% - (var(--gap) / 2)) !important;
+			}
+			// tablet-narrow
+			@include grid.mq(tablet-narrow) {
+				width: calc(50% - (var(--gap) / 2)) !important;
+			}
+
+			// mobile
+			@include grid.mq(mobile) {
+				width: 100%;
+			}
+		}
+	}
+
+}

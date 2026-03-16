@@ -1,0 +1,306 @@
+@use '../variables';
+@use '../mixins';
+@use '../grid';
+
+.bet-list {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+
+	// @responsive
+	@include grid.mq(mobile) {
+		gap: 2em;
+	}
+}
+
+.bet-item {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	background-color: variables.$colorGrayLight;
+	border-radius: 0.4em;
+	overflow: hidden;
+
+	// @animation		
+	transition-property: background-color;
+	transition-duration: variables.$hoverAnimationDuration;
+	transition-timing-function: ease-out;	
+
+	// @responsive
+	@include grid.mq(mobile) {
+		flex-direction: column;
+		border: 1px solid rgba(black, 0.1);
+	}
+
+	.column {
+		display: flex;
+		justify-content: center;
+
+		&.info {
+			padding: 0.75em 1.25em;
+			flex-grow: 1;
+			display: flex;
+			flex-direction: column;
+			order: 1;
+
+			.field {
+				display: block;
+				line-height: variables.$lineHeightCondensed;
+
+				.label {
+					display: block;
+					font-size: var(--font-size-small);
+				}
+
+				&.horizontal {
+					.label {
+						display: inline;
+						font-size: 1em;
+					}
+				}
+			}
+
+			.basic-info {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				gap: 1.5em;
+
+				// @responsive
+				@include grid.mq(mobile) {
+					flex-direction: column;
+					align-items: flex-start;
+					gap: 1em;
+				}
+
+				.group.match-info {
+					flex-grow: 1;
+				}
+
+				.group.bet-type {
+					flex: 0 0 20%;
+				}
+
+				.group.bet-values {
+					flex: 0 0 20%;
+				}
+
+				.sport-name {
+					font-weight: variables.$fwMedium;
+					color: variables.$colorGrayText;
+					margin-bottom: 0.5em;
+				}
+
+				.match-name-with-date {
+					display: flex;
+					flex-direction: column;
+					gap: 0.5em;
+				}
+
+				.match-name {
+					font-size: 1rem;
+					font-weight: variables.$fwMedium;
+					margin: 0;
+					display: flex;
+					flex-direction: row;
+					flex-wrap: wrap;
+					row-gap: 1.5em;
+					margin-top: 0.75em;
+
+					.field {
+						position: relative;
+						display: block;
+						font-weight: bold;
+
+						.label {
+							position: absolute;
+							display: inline-block;
+							top: -1.4em;
+							font-size: var(--font-size-tiny);
+							color: variables.$colorGrayText;
+							font-weight: normal;
+						}
+					}
+				}
+
+				.match-date {
+					white-space: nowrap;
+				}
+			}
+
+			.detail {
+				$topSpace: 0.75em;
+
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				gap: 1.5em;
+				justify-content: space-between;
+				border-top: 1px solid rgba(black, 0.15);
+				padding-top: $topSpace;
+				margin-top: $topSpace;
+
+				// @responsive
+				@include grid.mq(mobile) {
+					flex-direction: column;
+					align-items: flex-start;
+				}
+
+				.group.buttons {
+					&:empty {
+						display: none;
+					}
+				}
+
+				.group.date-info {
+					display: flex;
+					flex-direction: row;
+					gap: 3em;
+
+					// @responsive
+					@include grid.mq(mobile) {
+						flex-direction: column;
+						gap: 1em;
+					}
+				}
+			}
+		}
+
+		&.status {
+			display: flex;
+			box-sizing: border-box;
+			flex: 0 0 9em;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			background-color: variables.$colorBlueLight;
+			gap: 0.3rem;
+			padding: 1em 0.5em;
+			order: 2;
+
+			// @responsive
+			@include grid.mq(mobile) {
+				flex: 0 0 auto;
+			}	
+
+			span {
+				display: block;
+			}
+
+			.status-label {
+				line-height: variables.$lineHeightCondensed;
+				font-size: var(--font-size-small);
+
+				&.tiny {
+					font-size: var(--font-size-tiny);
+					color: variables.$colorGrayText;
+				}
+			}
+
+			.amount-label {
+				font-size: 1.75em;
+				font-weight: variables.$fwMedium;
+			}
+
+			&.status-win {
+				background-color: variables.$colorPositive;
+				color: white;
+			}
+
+			&.status-loss {
+				background-color: variables.$colorNegative;
+				color: white;
+			}
+
+			&.status-cancelled {
+				background-color: variables.$colorGrayMedium;
+				color: variables.$colorGrayText;
+			}
+		}
+
+		&.toggle {
+			order: 3;
+
+			// @responsive
+			@include grid.mq(mobile) {
+				order: 1;
+				padding: 0.75em 1.25em;
+				padding-bottom: 1em;
+				justify-content: flex-start;
+			}
+		}
+	}
+
+	.toggle-button {
+		@include mixins.button-reset;
+		@include mixins.link-transition;
+		display: flex;
+		height: 100%;
+		align-items: center;
+		justify-content: center;
+		background-color: black;
+		color: variables.$colorPrimaryYellow;
+		padding: 0.5em 0.15em;
+
+		// @responsive
+		@include grid.mq(mobile) {
+			height: auto;
+			width: auto;
+			padding: 0;
+			background-color: transparent;
+			color: currentColor;
+		}
+
+		span {
+			display: none;
+			margin-right: 0.5em;
+
+			// @responsive
+			@include grid.mq(mobile) {
+				display: inline-block;
+			}
+		}
+
+		.icon {
+			font-size: 1.75em;
+			transition: transform variables.$hoverAnimationDuration ease-out;
+
+			// @responsive
+			@include grid.mq(mobile) {
+				font-size: 1.35em;
+				transform: rotate(90deg);
+			}
+		}
+
+		@include mixins.hover-enabled {
+			&:hover {
+				background-color: variables.$colorGrayExtraDark;
+				color: white;
+
+				// @responsive
+				@include grid.mq(mobile) {
+					background-color: transparent;
+					color: currentColor;
+				}
+			}
+		}
+
+		&.open {
+			.icon {
+				transform: rotate(90deg);
+
+				// @responsive
+				@include grid.mq(mobile) {
+					transform: rotate(-90deg);
+				}
+			}
+		}
+	}
+
+	&.open {
+		background-color: variables.$colorYellowLight;
+	}
+
+}

@@ -1,0 +1,60 @@
+@use '../variables';
+@use '../mixins';
+
+
+.button,
+.btn {
+	@include mixins.button-reset;
+	
+	display: inline-block;
+	background-color: black;
+	color: white;
+	text-align: center;
+	font-family: variables.$fontInter;
+	font-size: 1em;
+	line-height: 1em;
+	font-weight: variables.$fwMedium;
+	text-decoration: none;
+	min-width: 5em;
+	white-space: nowrap;
+	padding: 0.8em 1.7em;
+	margin: 0;
+	outline: 0;
+	border-radius: 0.4rem;
+	
+	// @animation	
+	@include mixins.link-transition;
+	
+	&:focus {
+		outline: 0;
+	}
+	
+	&:hover {
+		color: white;
+		text-decoration: none;
+		background-color: variables.$colorPrimaryActive;
+	}
+
+	/* Size variants */
+	&.small {
+		font-size: var(--font-size-small);
+		padding: 0.4em 1em;
+	}
+
+	&.disabled,
+	&[disabled] {
+		opacity: 0.4;
+		cursor: not-allowed;
+		pointer-events: none;
+	}
+
+	&.btn-secondary {
+		background-color: variables.$colorGrayMedium;
+		color: variables.$colorBodyText;
+
+		&:hover {
+			background-color: variables.$colorGrayDark;
+			color: white;
+		}
+	}
+}

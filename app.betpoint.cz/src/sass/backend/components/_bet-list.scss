@@ -1,0 +1,217 @@
+@use '../variables';
+@use '../mixins';
+
+.bet-list {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	gap: 1em;
+}
+
+.bet-item {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: row;
+	background-color: variables.$colorGrayLight;
+	border-radius: 0.4em;
+	overflow: hidden;
+
+	// @animation		
+	transition-property: background-color;
+	transition-duration: variables.$hoverAnimationDuration;
+	transition-timing-function: ease-out;	
+
+	.column {
+		display: flex;
+		justify-content: center;
+
+		&.info {
+			padding: 0.75em 1.25em;
+			flex-grow: 1;
+			display: flex;
+			flex-direction: column;
+
+			.field {
+				display: block;
+				line-height: variables.$lineHeightCondensed;
+
+				.label {
+					display: block;
+					font-size: var(--font-size-small);
+				}
+
+				&.horizontal {
+					.label {
+						display: inline;
+						font-size: 1em;
+					}
+				}
+			}
+
+			.basic-info {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				gap: 1.5em;
+
+				.group.match-info {
+					flex-grow: 1;
+				}
+
+				.group.bet-type {
+					flex: 0 0 20%;
+				}
+
+				.group.bet-values {
+					flex: 0 0 20%;
+				}
+
+				.sport-name {
+					font-weight: variables.$fwMedium;
+					color: variables.$colorGrayText;
+					margin-bottom: 0.5em;
+				}
+
+				.match-name-with-date {
+					display: flex;
+					flex-direction: column;
+					gap: 0.5em;
+				}
+
+				.match-name {
+					font-size: 1rem;
+					font-weight: variables.$fwMedium;
+					margin: 0;
+					display: flex;
+					flex-direction: row;
+					flex-wrap: wrap;
+					row-gap: 1.5em;
+					margin-top: 0.75em;
+
+					.field {
+						position: relative;
+						display: block;
+						font-weight: bold;
+
+						.label {
+							position: absolute;
+							display: inline-block;
+							top: -1.4em;
+							font-size: var(--font-size-tiny);
+							color: variables.$colorGrayText;
+							font-weight: normal;
+						}
+					}
+				}
+
+				.match-date {
+					white-space: nowrap;
+				}
+			}
+
+			.detail {
+				$topSpace: 0.75em;
+
+				display: none;
+				flex-direction: row;
+				align-items: center;
+				gap: 1.5em;
+				justify-content: space-between;
+				border-top: 1px solid rgba(black, 0.15);
+				padding-top: $topSpace;
+				margin-top: $topSpace;
+
+				.group.date-info {
+					display: flex;
+					flex-direction: row;
+					gap: 3em;
+				}
+			}
+		}
+
+		&.status {
+			flex: 0 0 9em;
+			text-align: center;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			background-color: variables.$colorBlueLight;
+			gap: 0.3rem;
+
+			span {
+				display: block;
+			}
+
+			.status-label {
+				line-height: variables.$lineHeightCondensed;
+				font-size: var(--font-size-small);
+
+				&.tiny {
+					font-size: var(--font-size-tiny);
+					color: variables.$colorGrayText;
+				}
+			}
+
+			.amount-label {
+				font-size: 1.75em;
+				font-weight: variables.$fwMedium;
+			}
+
+			&.status-win {
+				background-color: variables.$colorPositive;
+				color: white;
+			}
+
+			&.status-loss {
+				background-color: variables.$colorNegative;
+				color: white;
+			}
+
+			&.status-cancelled {
+				background-color: variables.$colorGrayMedium;
+				color: variables.$colorGrayText;
+			}
+		}
+	}
+
+	.toggle-button {
+		@include mixins.button-reset;
+		@include mixins.link-transition;
+		display: flex;
+		height: 100%;
+		align-items: center;
+		justify-content: center;
+		background-color: black;
+		color: variables.$colorPrimaryYellow;
+		padding: 0.5em 0.15em;
+
+		.icon {
+			font-size: 1.75em;
+			transition: transform variables.$hoverAnimationDuration ease-out;
+		}
+
+		&:hover {
+			background-color: variables.$colorGrayExtraDark;
+			color: white;
+		}
+
+		&.open {
+			.icon {
+				transform: rotate(90deg);
+			}
+		}
+	}
+
+	&.open {
+		background-color: variables.$colorYellowLight;
+
+		.column {
+			&.info {
+				.detail {
+					display: flex;
+				}
+			}
+		}
+	}
+}

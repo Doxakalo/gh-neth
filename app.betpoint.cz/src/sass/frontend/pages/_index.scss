@@ -1,0 +1,40 @@
+@use '../variables';
+@use '../mixins';
+@use '../grid';
+
+.page.index {
+	.page-heading {
+		h1 {
+			margin-bottom: 0.25em;
+		}
+		margin-bottom: 2em;
+	}
+
+	.match-placeholder {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		text-align: center;
+		max-width: 30em;
+		gap: 2em;
+		margin: 0 auto;
+		margin-top: 5em;
+
+		// @responsive
+		@include grid.mq(mobile) {
+			flex-direction: column;
+			margin-top: 0;
+			margin-bottom: 2em;
+
+			p {
+				line-height: variables.$lineHeightCondensed;
+				font-size: var(--font-size-small);
+				font-weight: variables.$fwMedium;
+			}
+
+			.icon {
+				display: block;
+			}
+		}
+	}
+}

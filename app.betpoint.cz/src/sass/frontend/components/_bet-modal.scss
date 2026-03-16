@@ -1,0 +1,73 @@
+@use '../variables';
+@use '../mixins';
+@use '../grid';
+
+.bet-modal {
+	.inner {
+		max-width: 24em;
+	}
+
+	.button-container {
+		text-align: center;
+	}
+	
+	.bet-form {
+		.info {
+			display: flex;
+			flex-direction: column;
+			gap: 0.5em;
+			margin-bottom: 2em;
+	
+			.info-row {
+				display: flex;
+				flex-direction: row;
+				gap: 1em;
+	
+				span {
+					display: block;
+				}
+	
+				.label {
+					min-width: 5em;
+					flex: 0 0 auto;
+				}
+				.value {
+					flex-grow: 1;
+					font-weight: bold;
+				}
+			}
+		}
+	
+		.form-input {
+			&.potential-win {
+				.value {
+					display: block;
+					padding-top: 0.55em;
+				}
+			}
+		}
+
+		.global-error {
+			display: none;
+			text-align: center;
+			margin-bottom: 0.75em;
+			&:not(:empty) {
+				display: block;
+			}
+		}
+	}
+	
+	.bet-form-success {
+		text-align: center;
+	
+		h3 {
+			margin: 0 auto;
+			max-width: 12em;
+			margin-bottom: 1.5em;
+		}
+	
+		p {
+			margin-bottom: 2em;
+		}
+	}
+}

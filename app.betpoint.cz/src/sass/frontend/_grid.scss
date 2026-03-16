@@ -1,0 +1,41 @@
+@use 'grid-config' as config;
+@use 'sass-flex-grid/index' as grid with (
+	$grid-breakpoints: config.$grid-breakpoints
+);
+@use 'sass-flex-grid/helpers';
+
+// Expose grid mixins and functions
+@forward 'sass-flex-grid/helpers' show mq, getGutterForBreakpoint;
+
+.container {
+	margin: 0 auto;
+	box-sizing: border-box;
+	padding-left: calc(var(--current-grid-gutter) / 2);
+	padding-right: calc(var(--current-grid-gutter) / 2);
+	max-width: 1200px;
+	width: 90%;
+	
+	@include helpers.mq(desktop-large) {
+		//max-width: 90%;
+	}
+	
+	@include helpers.mq(desktop) {
+		//max-width: 90%;
+	}
+	
+	@include helpers.mq(tablet tablet-narrow) {
+		//max-width: 90%;
+		width: 100%;
+	}
+	
+	@include helpers.mq(mobile) {
+		//max-width: 600px;
+		width: 100%;
+		padding: 0 1rem;
+	}
+	
+	@include helpers.mq(mobile-small) {
+		padding: 0 0.8rem;
+	}
+
+}

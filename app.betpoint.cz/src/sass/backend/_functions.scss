@@ -1,0 +1,5 @@
+@use 'sass:color';
+
+@function hex-to-rgb-string($color) {
+	@return "#{color.channel($color, 'red')}, #{color.channel($color, 'green')}, #{color.channel($color, 'blue')}";
+}

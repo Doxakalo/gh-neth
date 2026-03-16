@@ -1,0 +1,45 @@
+@use '../variables';
+@use '../mixins';
+
+.tabs {
+	.tab-list {
+		display: flex;
+		flex-direction: row;
+		align-items: flex-end;
+		border-bottom: 2px solid black;
+		margin-bottom: 0.5em;
+
+		.tab-button {
+			@include mixins.button-reset;
+			@include mixins.link-transition;
+			background-color: variables.$colorGrayMedium;
+			color: variables.$colorGrayText;
+			font-size: 1.25rem;
+			padding: 0.7em 1.25em;
+			border-top-left-radius: 0.4em;
+			border-top-right-radius: 0.4em;
+
+			&:hover:not(.active) {
+				background-color: variables.$colorGrayDark;
+				color: white;
+			}
+
+			&.active {
+				background-color: black;
+				color: variables.$colorPrimaryYellow;
+				font-weight: variables.$fwMedium;
+				padding: 0.8em 1.25em;
+			}
+		}
+	}
+
+	.tab-content {
+		> [data-tab-content] {
+			display: none;
+
+			&.active {
+				display: block;
+			}
+		}
+	}
+}

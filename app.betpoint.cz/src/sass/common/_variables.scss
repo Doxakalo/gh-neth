@@ -1,0 +1,31 @@
+/* Variables */
+$lineHeightBase: 1.5em;
+$lineHeightHeading: 1.3em;
+$lineHeightCondensed: 1.3em;
+$hoverAnimationDuration: 0.3s;
+
+
+/* Colors */
+$colorBodyText: black;
+$colorRed: #C00F0C;
+$colorPrimaryYellow: #F5CA53;
+$colorPrimaryActive: $colorRed;
+$colorPositive: #14AE5C;
+$colorPositiveSecondary: #AFF4C6;
+$colorNegative: $colorRed;
+$colorGrayMedium: #E2E2E2;
+$colorGrayDark: #989898;
+$colorGrayExtraDark: #606060;
+$colorGrayLight: #F5F5F5;
+$colorGrayText: #656565;
+$colorGrayPlaceholderText: #999999;
+$colorBlueLight: #DCF2FE;
+$colorYellowLight: #F9ECC7;
+
+
+/* Fonts */
+$fontInter: "Inter", sans-serif;
+$fontRoboto: "Roboto", sans-serif;
+
+$fwLight: 300;
+$fwMedium: 500;

@@ -1,0 +1,253 @@
+@use '../variables';
+@use '../mixins';
+@use '../grid';
+
+:root {
+	--header-height: 100px;
+}
+
+@include grid.mq(mobile) {
+	:root {
+		--header-height: 80px;
+	}
+}
+
+header {
+	background: linear-gradient(180deg, #F6E9C4 0%, variables.$colorPrimaryYellow 100%);
+	position: fixed;
+	z-index: 100;
+	width: 100%;
+
+	.header-inner {
+		min-height: var(--header-height);
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		gap: 3em;
+
+		// @responsive
+		@include grid.mq(tablet) {
+			gap: 2em;
+		}
+		@include grid.mq(mobile) {
+			gap: 1em;
+		}
+	}
+
+	.brand {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		white-space: nowrap;
+		gap: 1em;
+		text-decoration: none;
+
+		img {
+			display: block;
+			height: 78px;
+			width: auto;
+		}
+
+		span {
+			display: block;
+			font-size: 2.25em;
+			font-weight: 200;
+			color: variables.$colorBodyText;
+		}
+
+		// @responsive
+		@include grid.mq(mobile) {
+			img {
+				height: 65px;
+			}
+
+			span {
+				font-size: 1.75em;
+			}
+
+			@media (max-width: 480px) {
+				span {
+					display: none
+				}
+			}
+		}
+		@include grid.mq(mobile-small) {
+			img {
+				height: 58px;
+			}
+		}
+	}
+
+	nav {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		gap: 0.5em;
+
+		.nav-link {
+			--min-size: 3em;
+
+			@include mixins.button-reset;
+			@include mixins.link-transition;
+			display: inline-flex;
+			flex-direction: row;
+			padding: 0.4em 0.7em;
+			min-width: var(--min-size);
+			min-height: var(--min-size);
+			border-radius: 0.2em;
+			align-items: center;
+			text-align: center;
+			justify-content: center;
+			background-color: rgba(black, 0.07);
+			color: variables.$colorBodyText;
+			font-weight: 300;
+
+			// @responsive 
+			@include grid.mq(mobile) {
+				--min-size: 2.5em;
+				padding: 0.3em 0.5em;
+			}
+
+			&:hover {
+				background-color: rgba(black, 0.16);
+				color: variables.$colorBodyText;
+
+				.icon {
+					text-decoration: none;
+				}
+			}
+
+			&.active {
+				background-color: black;
+				color: variables.$colorPrimaryYellow;
+				cursor: default;
+			}
+
+			&.home {
+				.icon {
+					font-size: 1.35em;
+				}
+			}
+
+			&.account-shortcut {
+				$gap: 0.6em;
+				padding-top: 0;
+				padding-bottom: 0;
+
+				// @responsive
+				@include grid.mq(mobile) {
+					flex-direction: column;
+				}
+
+				span {
+					display: block;
+				}
+
+				.account {
+					padding-right: $gap;
+					margin-right: $gap;
+					border-right: 1px solid rgba(black, 0.2);
+					text-align: left;
+
+					.label {
+						margin-bottom: 0.2em;
+					}
+
+					.name {
+						font-weight: bold;
+						font-size: 0.9em;
+						@include mixins.ellipsis;
+						max-width: 10em;
+					}
+
+					// @responsive 
+					@include grid.mq(mobile) {
+						margin-right: 0;
+						padding-right: 0;
+						border-right: none;
+						margin-bottom: 0.1em;
+
+						.label {
+							font-size: var(--font-size-tiny);
+							margin-bottom: 0;
+						}
+
+						.name {
+							display: none;
+						}
+					}
+				}
+				.balance {
+					.icon {
+						display: inline-block;
+						margin-bottom: 0.2em;
+					}
+					.value {
+						font-weight: bold;
+						font-size: 0.9em;
+						@include mixins.ellipsis;
+						display: block;
+						max-width: 7em;
+					}
+
+					// @responsive 
+					@include grid.mq(mobile) {
+						font-size: var(--font-size-small);
+						display: flex;
+						flex-direction: row;
+						.icon {
+							margin-right: 0.3em;
+						}
+						.value {
+							display: inline-block;
+						}
+					}
+				}
+
+				&.active {
+					.account {
+						border-right-color: rgba(variables.$colorPrimaryYellow, 0.5);
+					}
+					.name {
+						color: white
+					}
+				}
+			}
+
+			&.text-only {
+				&:not(:hover) {
+					background: none;
+				}
+			}
+
+			&.icon-right {
+				.icon {
+					margin-left: 0.5em;
+				}
+			}
+
+			&.sign-out {
+				// @responsive 
+				@include grid.mq(mobile) {
+					&:not(:hover) {
+						background-color: rgba(black, 0.07);
+					}
+
+					span {
+						display: none;
+					}
+
+					.icon {
+						margin-left: 0;
+					}
+				}
+			}
+		}
+	}
+}
+
+#header-wrapper {
+	min-height: var(--header-height);
+}

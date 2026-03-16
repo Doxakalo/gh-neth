@@ -1,0 +1,58 @@
+@use '../variables';
+@use '../mixins';
+
+.user-create {
+	.form-group.field-createuserform-comment {
+		textarea {
+			min-height: 8em;
+		}
+	}
+}
+
+.user-view {
+	.account-details {
+		.details-row {
+			display: flex;
+			flex-direction: row;
+			gap: 2em;
+
+			&>div {
+				flex: 1;
+				min-width: 0;
+
+				strong {
+					display: block;
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+
+	.account-wallet {
+		h2 {
+			white-space: nowrap;
+
+			.icon {
+				margin-left: 0.3em;
+			}
+		}
+
+		.balance {
+			strong {
+				font-weight: variables.$fwMedium;
+				font-size: 1.5em;
+			}
+			small {
+				font-size: 0.8em;
+			}
+		}
+	}
+}
+
+.user-update {
+	.form-group.field-user-comment {
+		textarea {
+			min-height: 8em;
+		}
+	}
+}

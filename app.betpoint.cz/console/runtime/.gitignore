@@ -1,0 +1,4 @@
+*.log
+*.log.*
+cron/weekly_run.json
+!*.gitkeep

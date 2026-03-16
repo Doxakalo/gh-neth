@@ -1,0 +1,13 @@
+@use '../variables';
+@use '../mixins';
+
+footer.footer {
+	background-color: black;
+	color: white;
+	text-align: center;
+	padding: 1.25em 0;
+
+	p {
+		margin: 0;
+	}
+}

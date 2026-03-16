@@ -1,0 +1,316 @@
+@use 'sass:math';
+@use 'sass:color';
+
+/* Variables */
+$mailWidth: 600px;
+$fontSizeBase: 14px;
+$lineHeightBase: 1.3;
+
+
+/* Colors */
+$colorBlack: #000000;
+$colorWhite: #ffffff;
+$colorGrayLight: #F0F0F0;
+$colorGrayMediumDark: #7a7a7a;
+$colorBodyText: $colorBlack;
+
+
+/* Fonts */
+$fontHelvetica: Helvetica, Arial, sans-serif;
+
+
+/* Mixins */
+@mixin default-font-style() {
+	font-family: $fontHelvetica;
+	font-size: $fontSizeBase;
+	line-height: math.round($fontSizeBase * $lineHeightBase);
+	font-weight: normal;	
+}
+
+@mixin font-size-ratio($ratio) {
+	font-size: math.round($fontSizeBase * $ratio);
+	line-height: math.round(($fontSizeBase * $lineHeightBase) * $ratio);
+}
+
+@mixin list-reset {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+
+	li {
+		padding: 0;
+		margin: 0;
+	}
+}
+
+@mixin mobile(){
+	@media only screen and (max-width: $mailWidth){
+       @content;
+    }
+}
+
+
+/* Mail styles */
+.nowrap { white-space: nowrap; }
+.tal { text-align: left; }
+.tar { text-align: right; }
+.tac { text-align: center; }
+
+body {
+	background-color: $colorGrayLight;
+	color: $colorBodyText;
+	padding-top: 0;
+	margin-top: 0;
+	@include default-font-style();
+	
+	// @responsive
+	@include mobile {
+        padding: 0;
+    }		
+}
+
+/*
+ Tables & Layout
+*/
+table {
+	border: none;
+	border-spacing: 0;
+	border-collapse: collapse;
+	@include default-font-style();
+
+	th, 
+	td {
+		@include default-font-style();
+		color: $colorBodyText;
+		text-align: left;
+		vertical-align: top;
+		padding: 0;
+	}
+	
+	td.side-padding {
+		width: 25px;
+		
+		// @responsive
+		@include mobile {
+			width: 0px;
+		}			
+	}
+}
+
+table.wrapper {
+	width: 100%;
+	background-color: $colorGrayLight;
+	
+	> tr > td {
+		text-align: center;
+	}
+}
+
+table.main {
+	margin: 0 auto;
+	width: $mailWidth;
+	background-color: $colorWhite;
+	box-shadow: 0 20px 30px 0 rgba($colorBlack, 0.1);
+	
+	// @responsive
+	@include mobile {
+        width: 100% !important;
+    }	
+}
+
+table.content {
+	width: 100%;
+	background-color: $colorWhite;
+
+	> tr > td {
+		text-align: left;
+	}
+	
+	/*
+	// center all buttons
+	table.button {
+		margin: 0 auto;
+	}
+	*/
+}
+
+table.header {
+	padding: 0;
+	
+	img {
+		width: 100%;
+		height: auto;
+	}
+	
+	// @responsive
+	@include mobile {
+		img {
+			width: 100% !important;
+		}
+	}		
+}
+
+table.footer {
+	width: 100%;
+	
+	td {
+		text-align: center;
+	
+		p {
+			margin: 0;
+			@extend small;
+			color: $colorGrayMediumDark;
+		}
+		
+		a {
+			color: $colorGrayMediumDark;
+		}
+	}
+}
+
+table.spacer {
+	width: 100%;
+	
+	tr, td {
+		font-size: 1px !important;
+		line-height: 1px !important;
+		padding: 0;
+	}
+	
+	&.spacer-10 {
+		td {
+			height: 10px !important;
+		}
+	}
+	
+	&.spacer-20 {
+		td {
+			height: 20px !important;
+		}
+	}
+	
+	&.spacer-30 {
+		td {
+			height: 30px !important;
+		}
+	}
+	
+	&.spacer-40 {
+		td {
+			height: 40px !important;
+		}
+	}
+	
+	&.spacer-50 {
+		td {
+			height: 50px !important;
+		}
+	}
+	
+	&.spacer-100 {
+		td {
+			height: 100px !important;
+		}
+	}
+}
+
+
+/*
+ Content
+*/
+h1, h2, h3, h4, h5, h6 {
+	line-height: $lineHeightBase;
+	font-size: 1em;
+	font-weight: bold;
+	padding: 0;
+	margin: 0;
+	margin-bottom: 0.5em;
+}
+
+h2 {
+	@include font-size-ratio(1.75); 
+}
+
+h2 {
+	@include font-size-ratio(1.5); 
+}
+
+p {
+	@include default-font-style();
+	color: $colorBodyText;
+	margin: 0;
+}
+
+a {
+	color: currentColor;
+	text-decoration: underline;
+}
+
+small {
+	@include font-size-ratio(0.85); 
+}
+
+p {
+	margin-bottom: 1.25em;
+}
+
+h2 {
+	font-size: 1.5em;
+	font-weight: normal;
+	margin-bottom: 0.25em;
+}
+
+ul,
+ol {
+	margin: 0;
+	padding: 0;
+	margin-bottom: 1em;	
+
+	li {
+		margin: 0;
+		padding: 0;
+		margin-left: 1.5em;
+		font-size: 1em;
+		line-height: $lineHeightBase;
+	}
+
+	ul, ol {
+		margin-bottom: 0;
+	}
+}
+
+ul.unstyled {
+	@include list-reset();
+}
+
+img {
+	border: none;
+}
+
+table.button {
+	td {
+		background-color: $colorGrayMediumDark;
+		padding: 10px 30px 10px 30px; 
+		border-radius: 5px;
+		text-align: center;
+		
+		a {
+			@include default-font-style();
+			@include font-size-ratio(1.2); 
+			display: inline-block;
+			color: $colorWhite;
+			text-decoration: none;
+		}
+	}
+
+	&.center {
+		margin: 0 auto;
+	}
+}
+
+.signature {
+	a {
+		color: currentColor;
+		text-decoration: none;
+	}
+}
